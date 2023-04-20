@@ -1,0 +1,49 @@
+<table border="5">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Salary</td>
+    </tr>
+
+    <tbody id="record">
+
+    </tbody>
+
+</table>
+
+<script type="text/javascript">
+
+    let tbl = "";
+
+    class Emp{
+        constructor(id,name,sal){
+            this.id = id;
+            this.name = name;
+            this.sal = sal;
+        }
+        getRecord(){
+
+            tbl += `
+                        <tr>
+                            <td>${this.id}</td>
+                            <td>${this.name}</td>
+                            <td>${this.sal}</td>
+                        </tr>
+                    `
+
+            document.getElementById('record').innerHTML = tbl;
+        }
+    }
+
+    let ans = new Emp(111,"ayyu",1000);
+    let ans1 = new Emp(222,"jeel",1500);
+    let ans2 = new Emp(333,"jay",40000);
+    let ans3 = new Emp(444,"rajni",10000);
+
+    ans.getRecord();
+    ans1.getRecord();
+    ans2.getRecord();
+    ans3.getRecord();
+
+   
+</script>
