@@ -1,0 +1,36 @@
+<script type="text/javascript" >
+
+    var a=parseInt(prompt("Enter A :-"));
+    var b=parseInt(prompt("Enter B :-"));
+    var select=prompt("Enter sign :-  + ,- ,* , /");
+    var ans;
+
+
+    switch(select)
+    {
+        case "+":
+            ans=a+b;
+            document.write("<h1>Answer : "+ ans +"</h1>");
+        break; 
+
+        case "-":
+            ans=a-b;
+            document.write("<h1>Answer : "+ ans +"</h1>");
+        break;
+
+        case "*":
+            ans=a*b;
+            document.write("<h1>Answer : "+ ans +"</h1>");
+        break;
+
+        case "/":
+            ans=a/b;
+            document.write("<h1>Answer : "+ ans +"</h1>");
+        break;
+
+        default :
+            document.write("<h1>Not valid</h1>");
+    }
+
+
+</script>

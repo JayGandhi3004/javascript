@@ -1,0 +1,33 @@
+<script type="text/javascript">
+
+    var a=parseInt(prompt("Enter A :-"));
+    var b=parseInt(prompt("Enter B :-"));
+    var select=prompt("enter select : + , - , * , /")
+    var result;
+
+    if (select=="+") {
+        ans=a+b;
+        document.write("<h1>Answer : "+ ans +"</h1>");
+    }
+    else if(select=="-")
+    {
+        ans=a-b;
+        document.write("<h1>Answer : "+ ans +"</h1>");
+    }
+    else if(select=="*")
+    {
+        ans=a*b;
+        document.write("<h1>Answer : "+ ans +"</h1>");
+    }
+    else if(select=="/")
+    {
+        ans=a/b;
+        document.write("<h1>Answer : "+ ans +"</h1>");
+    }
+    else 
+    {
+        document.write("<h1>Not valid</h1>");
+    }
+
+
+</script>

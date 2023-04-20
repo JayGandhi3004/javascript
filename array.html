@@ -1,0 +1,44 @@
+<center>
+    <table border="5">
+        <tr>
+            <td>GR ID</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Lucky No</td>
+        </tr> 
+        <tbody id="record">
+        </tbody>
+    </table>
+</center>
+
+
+<script type="text/javascript">
+
+    var data =prompt("Enter data :");
+
+    var data1=[1,"jay","jay@gmail.com",1234];    
+    var data2=[2,"jeel","jeel@gmail.com",5678];    
+    var data3=[3,"ayyu","ayyu@gmail.com",9101];    
+    var data4=[4,"dave","dave@gmail.com",1213];    
+    var data5=[5,"yash","yash@gmail.com",1415];    
+
+    var alldata=[data1,data2,data3,data4,data5];
+    var tbl="";
+
+    for(var i=0;i<alldata.length;i++){
+        if(data==alldata[i][0]){
+        tbl +=  
+                `
+                    <tr>
+                        <td>${alldata[i][0]}</td>
+                        <td>${alldata[i][1]}</td>
+                        <td>${alldata[i][2]}</td>
+                        <td>${alldata[i][3]}</td>
+                    </tr>
+               `
+        }
+        document.getElementById('record').innerHTML=tbl;
+    }
+
+
+</script>

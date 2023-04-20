@@ -1,0 +1,43 @@
+<script class="text/javascript">
+
+    var a=parseInt(prompt("Enter value A:-"));
+    var b=parseInt(prompt("Enter value B:-"));
+    var c=parseInt(prompt("Enter value C:-"));
+    var d=parseInt(prompt("Enter value D:-"));
+
+    function simple(){
+        if(a>b){
+            if(a>c){
+                if(a>d){
+                    document.write("<h1>A is Big</h1>");
+                }else{
+                    document.write("<h1>D is Big</h1>");
+                }
+            }else{
+                if(c>d){
+                    document.write("<h1>C is Big </h1>");                    
+                }else{
+                    document.write("<h1>D is Big</h1>");
+                }
+            }
+        }else{
+            if(b>d){
+                if(b>d){
+                    document.write("<h1>B is Big</h1>");
+                }else{
+                    document.write("<h1>D is Big</h1>");
+                }
+            }else{
+                if(c>d){
+                    document.write("<h1>C is Big</h1>");
+                }else{
+                    document.write("<h1>D is Big</h1>");
+                }
+            }
+
+        }
+    }
+
+    simple();
+
+</script>

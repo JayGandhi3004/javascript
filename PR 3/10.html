@@ -1,0 +1,34 @@
+<script type="text/javascript">
+
+    var a=parseInt(prompt("Enter A : "));
+    var b=parseInt(prompt("Enter B : "));
+    var ans=prompt("choice Sign + - * / : ");
+
+    function simple(){
+        switch(ans){
+            case '+':
+                ans=a+b;
+                document.write("<h1> Add = "+ans+"</h1>")
+            break;
+            case '-':
+                ans=a-b;
+                document.write("<h1> Sub = "+ans+"</h1>")
+            break;
+            case '*':
+                ans=a*b;
+                document.write("<h1> Multi = "+ans+"</h1>")
+            break;
+            case '/':
+                ans=a/b;
+                document.write("<h1> Div = "+ans+"</h1>")
+            break;
+            default:
+                document.write("<h1>Not Valid</h1>")
+            break;
+        }
+    }
+
+    simple();
+
+
+</script>
