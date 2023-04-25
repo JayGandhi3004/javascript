@@ -20,25 +20,25 @@
                 <label for="name">User Name</label>
                 <input class="form-control" onkeypress="nclick()" type="text" id="name"
                     placeholder="Enter your User Name">
-                <span style="color:red" id="nerr"></span>
+                <span style="color:red" id="nameerr"></span>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input class="form-control" type="email" onkeypress="eclick()" id="email"
                     placeholder="Enter your password">
-                <span style="color:red" id="eerr"></span>
+                <span style="color:red" id="emailerr"></span>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input class="form-control" type="password" onkeypress="pclick()" id="password"
                     placeholder="Enter your password">
-                <span style="color:red" id="perr"></span>
+                <span style="color:red" id="passworderr"></span>
             </div>
             <div class="form-group">
-                <label for="phone">Password</label>
+                <label for="phone">Phone No</label>
                 <input class="form-control" type="tel" onkeypress="mclick()" id="phone"
                     placeholder="Enter your Phone Number">
-                <span style="color:red" id="merr"></span>
+                <span style="color:red" id="mobileerr"></span>
             </div>
             <button type="button" onclick="save()" class="btn btn-primary">Submit</button>
         </form>
@@ -68,7 +68,7 @@
             let a = document.getElementById('name');
         }
         else {
-            document.getElementById('nerr').innerHTML = "Plese input valid name";
+            document.getElementById('nameerr').innerHTML = "Plese input valid name";
             alert("Plese enter only small case character and do not use special character");
             return false;
         }
@@ -84,7 +84,7 @@
         }
 
         else {
-            document.getElementById('eerr').innerHTML = "Please enter valid Email"
+            document.getElementById('emailerr').innerHTML = "Please enter valid Email"
             alert("Must be enter @ and dont input Capital charater ")
             return false;
         }
@@ -95,10 +95,10 @@
         var reg2 = new RegExp(pass);
 
         if (reg2.test(password)) {
-            let c = document.getElementById('email');
+            let c = document.getElementById('password');
         }
         else {
-            document.getElementById('perr').innerHTML = "Please enter valid Password"
+            document.getElementById('passworderr').innerHTML = "Please enter valid Password"
             alert("minimum 8 and maximum 16 character input only input alphabetic charecter");
             return false;
         }
@@ -113,7 +113,7 @@
             let d = document.getElementById('phone');
         }
         else {
-            document.getElementById('merr').innerHTML = "Please enter valid Phone Number"
+            document.getElementById('mobileerr').innerHTML = "Please enter valid Phone Number"
         }
 
    
@@ -121,16 +121,16 @@
     }
 
     function nclick() {
-        document.getElementById('nerr').style.display = "none";
+        document.getElementById('nameerr').style.display = "none";
     }
     function eclick() {
-        document.getElementById('eerr').style.display = "none";
+        document.getElementById('emailerr').style.display = "none";
     }
     function pclick() {
-        document.getElementById('perr').style.display = "none";
+        document.getElementById('passworderr').style.display = "none";
     }
     function mclick() {
-        document.getElementById('merr').style.display = "none";
+        document.getElementById('mobileerr').style.display = "none";
     }
 
 </script>
