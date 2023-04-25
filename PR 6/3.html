@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    
+    const a = parseInt(prompt("Enter No :-"));
+
+    class Table {
+        constructor(a) {
+            this.a = a;
+        }
+
+        multi() {
+            let b = 1;
+            let ans = a * b;
+            do {
+                console.log( a + " X " + b + " = " + a * b);
+                // document.write(a + " X " + b + " = " + a * b);
+                b++;
+            } while (b <= 10);
+        }
+    }
+
+    let ans = new Table;
+
+    ans.multi();
+
+
+</script>

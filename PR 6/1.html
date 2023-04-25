@@ -1,0 +1,46 @@
+<script type="text/javascript">
+
+    class Percentage {
+
+        percentage() {
+            let a = parseInt(prompt("Enter marks of Physics :-"));
+            let b = parseInt(prompt("Enter marks of chemistry :-"));
+            let c = parseInt(prompt("Enter marks of Biology :-"));
+            let d = parseInt(prompt("Enter marks of Mathematics :-"));
+            let e = parseInt(prompt("Enter marks of Computer :-"));
+            let sum = a+b+c+d+e;
+            let avg = sum*100/500;
+
+            console.log("a :-" + a);
+            console.log("b :-" + b);
+            console.log("c :-" + c);
+            console.log("d :-" + d);
+            console.log("e :-" + e);
+            console.log("Total :-" + sum);
+            console.log("avg :-" + avg);
+
+            if (avg >= 90) {
+                console.log("Grade :- A");
+            }
+            else if (avg >= 80) {
+                console.log("Grade :- B");
+            }
+            else if (avg >= 70) {
+                console.log("Grade :- C");
+            }
+            else if (avg >= 60) {
+                console.log("Grade :- D");
+            }
+            else if (avg >= 50) {
+                console.log("Grade :- E");
+            }
+            else {
+                console.log("Grade :- F");
+            }
+        }
+    }
+
+    let ans = new Percentage;
+    ans.percentage();
+
+</script>

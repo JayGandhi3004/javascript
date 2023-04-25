@@ -1,0 +1,49 @@
+<table border="5">
+
+    <tr>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Phone</td>
+    </tr>
+
+    <tbody id="record">
+
+    </tbody>
+
+</table>
+
+
+<script type="text/javascript">
+    let tbl = "";
+
+    class Data {
+        constructor(name, email, phone) {
+            this.name = name;
+            this.email = email;
+            this.phone = phone;
+        }
+        getRecord() {
+            tbl += `
+                        <tr>
+                            <td>${this.name}</td>        
+                            <td>${this.email}</td>        
+                            <td>${this.phone}</td>        
+                        </tr>
+                    `
+            document.getElementById('record').innerHTML=tbl;        
+        }
+    }
+
+    let allrecord1 = new Data("jay","jay@gmail.com","12345");
+    let allrecord2 = new Data("ajay","ajay@gmail.com","12345");
+    let allrecord3 = new Data("vijay","vijay@gmail.com","12345");
+    let allrecord4 = new Data("ashish","ashish@gmail.com","12345");
+
+
+    allrecord1.getRecord();
+    allrecord2.getRecord();
+    allrecord3.getRecord();
+    allrecord4.getRecord();
+
+
+</script>
