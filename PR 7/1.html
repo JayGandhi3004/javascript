@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Form Validation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Form Validation</h2>
+        <form action="">
+            <div class="form-group">
+                <label for="name">User Name</label>
+                <input class="form-control" onkeypress="nclick()" type="text" id="name"
+                    placeholder="Enter your User Name">
+                <span style="color:red" id="nerr"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" onkeypress="eclick()" id="email"
+                    placeholder="Enter your password">
+                <span style="color:red" id="eerr"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" onkeypress="pclick()" id="password"
+                    placeholder="Enter your password">
+                <span style="color:red" id="perr"></span>
+            </div>
+            <div class="form-group">
+                <label for="phone">Password</label>
+                <input class="form-control" type="tel" onkeypress="mclick()" id="phone"
+                    placeholder="Enter your Phone Number">
+                <span style="color:red" id="merr"></span>
+            </div>
+            <button type="button" onclick="save()" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+
+    function save() {
+
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+        let phone = document.getElementById('phone').value;
+
+
+        // for name 
+
+
+        let letter = /^[a-z]+$/;
+        var reg = new RegExp(letter);
+
+        if (reg.test(name)) {
+            let a = document.getElementById('name');
+        }
+        else {
+            document.getElementById('nerr').innerHTML = "Plese input valid name";
+            alert("Plese enter only small case character and do not use special character");
+            return false;
+        }
+
+        // for email 
+
+
+        let mail = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+        var reg1 = new RegExp(mail);
+
+        if (reg1.test(email)) {
+            let b = document.getElementById('email');
+        }
+
+        else {
+            document.getElementById('eerr').innerHTML = "Please enter valid Email"
+            alert("Must be enter @ and dont input Capital charater ")
+            return false;
+        }
+
+        // for password 
+
+        let pass = /^[A-Za-z]\w{7,14}$/;
+        var reg2 = new RegExp(pass);
+
+        if (reg2.test(password)) {
+            let c = document.getElementById('email');
+        }
+        else {
+            document.getElementById('perr').innerHTML = "Please enter valid Password"
+            alert("minimum 8 and maximum 16 character input only input alphabetic charecter");
+            return false;
+        }
+
+        // for mobile 
+
+
+        let mobile = /[0-9 -()+]+$/;
+        var reg3 = new RegExp(mobile);
+
+        if (reg3.test(phone)) {
+            let d = document.getElementById('phone');
+        }
+        else {
+            document.getElementById('merr').innerHTML = "Please enter valid Phone Number"
+        }
+
+   
+
+    }
+
+    function nclick() {
+        document.getElementById('nerr').style.display = "none";
+    }
+    function eclick() {
+        document.getElementById('eerr').style.display = "none";
+    }
+    function pclick() {
+        document.getElementById('perr').style.display = "none";
+    }
+    function mclick() {
+        document.getElementById('merr').style.display = "none";
+    }
+
+</script>
