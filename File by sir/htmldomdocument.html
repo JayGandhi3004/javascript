@@ -1,0 +1,76 @@
+<style>
+    .box{
+        background-color: green;
+        height: 200px;
+        width: 200px;
+        float : left;
+        margin-left: 50px;
+    }
+</style>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div style="clear: both;"></div>
+
+<button onclick="demo()">Click</button>
+
+
+
+<script type="text/javascript">
+    // const demo = () => {
+    //     console.log("hello");
+    // }
+    // demo();
+    // const sum = (a,b) => {
+    //     let c = a + b;
+    //     console.log("Ans = "+c);
+    // }
+    // sum(10,5);
+
+    // const sum2 = () => {
+    //     let a = 10,b=10;
+    //     let c = a + b;
+    //     return c;
+    // }
+    // let ans = sum2();
+    // console.log("Ans = "+ans);
+
+    // const sum3 = (p,q,r) => {
+    //     let z = p + q + r;
+    //     return z;
+    // }
+    // let ans2 = sum3(10,3,8);
+    // console.log("Ans = "+ans2);
+
+    // document.getElementById
+    // document.getElementsByTagName
+    // document.getElementsByClassName
+    // document.getElementsByName
+
+    const demo = () => {
+        let box = document.getElementsByClassName('box');
+        for(let i=0;i<box.length;i++)
+        {
+            if(i==0){
+                box[i].style.background = 'orange';
+                box[i].innerHTML = "<p style='color:white'>Hello<p>";
+            }else{
+                box[i].style.background = 'red';
+            }     
+        }
+    
+        // for(let i in h1)
+        // {   
+        //     if(i==1)
+        //     {
+        //         h1[i].style.color = "green";
+        //         h1[i].innerHTML = "vinit";
+        //     }else{
+        //         h1[i].style.color = "red";
+        //     }
+        
+        // }
+    }
+        
+
+</script>

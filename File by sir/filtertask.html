@@ -1,0 +1,245 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container">
+    <div class="row pt-5 pb-5">
+        <div class="col-md-1">
+            <button onclick="viewAllRecord()" class="btn btn-primary">All</button>
+        </div>
+        <div class="col-md-1">
+            <button onclick="breakfastData()" class="btn btn-primary">Breakfast</button>
+        </div>
+        <div class="col-md-1">
+            <button onclick="LanchData()" class="btn btn-primary">Lanch</button>
+        </div>
+        <div class="col-md-1">
+            <button onclick="eveningData()" class="btn btn-primary">Evening</button>
+        </div>
+        <div class="col-md-1">
+            <button onclick="dinnerData()" class="btn btn-primary">Dinner</button>
+        </div>
+    </div>
+
+    <div class="row" id="allrecord">
+        
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+let data = [
+        {
+            name : "bread omlet",
+            price : 150,
+            image : "https://images.pexels.com/photos/103124/pexels-photo-103124.jpeg",
+            category : "breakfast"
+        },
+        {
+            name : "alooparotha",
+            price : 200,
+            image : "https://images.pexels.com/photos/2113556/pexels-photo-2113556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "breakfast"
+        },
+        {
+            name : "punjabi",
+            price : 250,
+            image : "https://images.pexels.com/photos/1117862/pexels-photo-1117862.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "launch"
+        },
+        {
+            name : "khichadi",
+            price : 150,
+            image : "https://images.pexels.com/photos/6363499/pexels-photo-6363499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "launch"
+        },
+        {
+            name : "pizza",
+            price : 300,
+            image : "https://images.pexels.com/photos/5908255/pexels-photo-5908255.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "evening"
+        },
+
+        {
+            name : "pavbhaji",
+            price : 150,
+            image : "https://images.pexels.com/photos/5410400/pexels-photo-5410400.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "dinner"
+        },
+        {
+            name : "dhosa",
+            price : 150,
+            image : "https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "dinner"
+        },
+        {
+            name : "fruits",
+            price : 300,
+            image : "https://images.pexels.com/photos/101533/pexels-photo-101533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "breakfast"
+        },
+        {
+            name : "garlic bread",
+            price : 100,
+            image : "https://images.pexels.com/photos/920220/pexels-photo-920220.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "breakfast"
+        },
+        {
+            name : "nudals",
+            price : 250,
+            image : "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "launch"
+        },
+        {
+            name : "pasta",
+            price : 200,
+            image : "https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "launch"
+        },
+        {
+            name : "vadapav",
+            price : 25,
+            image : "https://media.istockphoto.com/id/1157164148/photo/vada-pav.jpg?s=2048x2048&w=is&k=20&c=VnfdY9yqG9QaQ75umOHdJvGQgNTILt0IHJj3I4KH_tU=",
+            category : "evening"
+        },
+        {
+            name : "gujarati",
+            price : 150,
+            image : "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "dinner"
+        },
+        {
+            name : "chanisebhel",
+            price : 200,
+            image : "https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            category : "dinner"
+        },        
+    ];
+
+
+    viewAllRecord();
+    function viewAllRecord()
+    {
+        let tbl = "";
+        data.map((val)=>{
+            tbl += `
+                <div class="col-md-4 pb-4">
+                    <div class="card">
+                        <img src="${val.image}" style="height:300px;object-fit:cover" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">${val.name}</h5>
+                        <p class="card-text">${val.category}</p>
+                        <a href="#" class="btn btn-primary">Order</a>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function breakfastData(){
+        let category = "breakfast";
+        let tbl = "";
+        data.map((val)=>{
+
+            if(val.category == category)
+            {
+                tbl += `
+                    <div class="col-md-4 pb-4">
+                        <div class="card">
+                            <img src="${val.image}" style="height:300px;object-fit:cover" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title">${val.name}</h5>
+                            <p class="card-text">${val.category}</p>
+                            <a href="#" class="btn btn-primary">Order</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+            
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function LanchData(){
+        let category = "launch";
+        let tbl = "";
+        data.map((val)=>{
+
+            if(val.category == category)
+            {
+                tbl += `
+                    <div class="col-md-4 pb-4">
+                        <div class="card">
+                            <img src="${val.image}" style="height:300px;object-fit:cover" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title">${val.name}</h5>
+                            <p class="card-text">${val.category}</p>
+                            <a href="#" class="btn btn-primary">Order</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+            
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function eveningData(){
+        let category = "evening";
+        let tbl = "";
+        data.map((val)=>{
+
+            if(val.category == category)
+            {
+                tbl += `
+                    <div class="col-md-4 pb-4">
+                        <div class="card">
+                            <img src="${val.image}" style="height:300px;object-fit:cover" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title">${val.name}</h5>
+                            <p class="card-text">${val.category}</p>
+                            <a href="#" class="btn btn-primary">Order</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+            
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    function dinnerData(){
+        let category = "dinner";
+        let tbl = "";
+        data.map((val)=>{
+
+            if(val.category == category)
+            {
+                tbl += `
+                    <div class="col-md-4 pb-4">
+                        <div class="card">
+                            <img src="${val.image}" style="height:300px;object-fit:cover" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title">${val.name}</h5>
+                            <p class="card-text">${val.category}</p>
+                            <a href="#" class="btn btn-primary">Order</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+            
+        })
+        document.getElementById('allrecord').innerHTML = tbl;
+    }
+
+    
+
+
+</script>
