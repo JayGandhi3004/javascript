@@ -1,0 +1,56 @@
+<table id="jay" border="5px">  
+
+</table>
+
+<style>
+    .lightbrown{
+        width: 100px;
+        height: 100px;
+        background-color: #F7c899;
+    }
+    .brown{
+        width: 100px;
+        height: 100px;
+        background-color: #ca8745;
+    }
+</style>
+
+<script>
+
+    let jay=document.getElementById('jay');
+
+    for(let i=1;i<=8;i++){
+        let tr=document.createElement('tr');
+        
+        if(i%2==1){
+            for(let j=1;j<=8;j++){
+                if(j%2==1){
+                    let td=document.createElement('td');
+                    td.setAttribute('class','lightbrown');
+                    tr.appendChild(td);
+                }else{
+                    let td=document.createElement('td');
+                    td.setAttribute('class','brown');
+                    tr.appendChild(td);
+                }
+                
+            }
+        }else{
+            for(let j=1;j<=8;j++){
+                if(j%2==1){
+                    let td=document.createElement('td');
+                    td.setAttribute('class','brown');
+                    tr.appendChild(td);
+                }else{
+                    let td=document.createElement('td');
+                    td.setAttribute('class','lightbrown');
+                    tr.appendChild(td);
+                }
+            }
+        }
+       
+
+        jay.appendChild(tr);
+    }
+
+</script>
