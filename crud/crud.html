@@ -1,0 +1,100 @@
+<table border="1">
+
+    <tr>
+        <td>Name :</td>
+        <td>
+            <input type="text" id="name" />
+        </td>
+    </tr>
+    <tr>
+        <td>Email :</td>
+        <td>
+            <input type="text" id="email" />
+        </td>
+    </tr>
+    <tr>
+        <td>Password :</td>
+        <td>
+            <input type="password" id="password" />
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input onclick="save()" type="button" value="submit" name="password" />
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+<table border="1">
+    <tr>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Password</td>
+    </tr>
+    <tbody id="record">
+        
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    let data=[]
+      viewdata();
+    function save(){
+        var name=document.getElementById('name').value;
+        var email=document.getElementById('email').value;
+        var password=document.getElementById('password').value;
+
+        let obj={
+            username: name,
+            useremail: email,
+            userpassword: password,
+        }
+
+        if(localStorage.getItem('crud')=== null || localStorage.getItem('crud')=== undefined){
+            data.push(obj);
+            localStorage.setItem('crud',JSON.stringify(data));
+        }else{
+            let val=JSON.parse(localStorage.getItem('crud'));
+            val.push(obj);
+            localStorage.setItem('crud',JSON.stringify(val));
+        }
+
+            
+
+        alert("Record Sucessfull");
+        document.getElementById('name').value="";
+        document.getElementById('email').value="";
+        document.getElementById('password').value="";
+        viewdata();
+    }
+
+    function viewdata(){
+        let val = JSON.parse(localStorage.getItem('crud'));
+        let tbl = "";
+        
+        // let map = val.map((val)=>{
+        //     tbl+=  `
+        //                 <tr>
+        //                     <td>${val.username}</td>
+        //                     <td>${val.useremail}</td>
+        //                     <td>${val.userpassword}</td>
+        //                 </tr>
+        //             ` 
+        // })
+
+        for(let i in val){
+            tbl+=  `
+                        <tr>
+                            <td>${val[i].username}</td>
+                            <td>${val[i].useremail}</td>
+                            <td>${val[i].userpassword}</td>
+                        </tr>
+                    ` 
+        }
+        document.getElementById('record').innerHTML=tbl;
+    }
+
+
+</script>
