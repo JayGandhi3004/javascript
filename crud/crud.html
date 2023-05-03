@@ -29,9 +29,11 @@
 <br>
 <table border="1">
     <tr>
+        <td>Id</td>
         <td>Name</td>
         <td>Email</td>
         <td>Password</td>
+        <td>Action</td>
     </tr>
     <tbody id="record">
         
@@ -47,6 +49,7 @@
         var password=document.getElementById('password').value;
 
         let obj={
+            userid: Math.floor(Math.random() * 0),
             username: name,
             useremail: email,
             userpassword: password,
@@ -87,14 +90,44 @@
         for(let i in val){
             tbl+=  `
                         <tr>
+                            <td>${val[i].userid}</td>
                             <td>${val[i].username}</td>
                             <td>${val[i].useremail}</td>
                             <td>${val[i].userpassword}</td>
+                            <td><button onclick="DeleteData(${val[i].userid})">Delete</button></td>
                         </tr>
                     ` 
         }
         document.getElementById('record').innerHTML=tbl;
     }
+
+    // function DeleteData(userid){
+    //     let val = JSON.parse(localStorage.getItem('crud'));
+
+    //     for(let i in val){
+    //         if(val[i].userid == userid){
+    //             val.splice(i,1);
+    //     }
+    //     localStorage.setItem('crud',JSON.stringify(val));
+    // }
+    // alert('Confirm Delete Data');
+    // viewdata();
+
+
+    const DeleteData = (userid) =>{
+        let val = JSON.parse(localStorage.getItem('crud'));
+
+        for(let i in val){
+            if(val[i].userid == userid){
+                val.splice(i,1);
+        }
+        localStorage.setItem('crud',JSON.stringify(val));
+    }
+    alert('Confirm Delete Data');
+    viewdata();
+}
+
+
 
 
 </script>
