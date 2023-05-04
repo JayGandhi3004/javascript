@@ -1,0 +1,123 @@
+<table border="1">
+    <tr>
+        <td>Name:-</td>
+        <td>
+            <input type="text" id="name" />
+        </td>
+    </tr>
+    <tr>
+        <td>Email:-</td>
+        <td>
+            <input type="text" id="email" />
+        </td>
+    </tr>
+    <tr>
+        <td>Password:-</td>
+        <td>
+            <input type="text" id="password" />
+        </td>
+    </tr>
+    <tr>
+        <td>Submit:-</td>
+        <td>
+            <input onclick="save()" type="button" value="Submit" id="submit" />
+        </td>
+    </tr>
+</table>
+
+<table border="1">
+    <tr>
+        <!-- <td>ID</td> -->
+        <td>Name</td>
+        <td>Email</td>
+        <td>Password</td>
+        <!-- <td>Action</td> -->
+    </tr>
+    <tbody id="record">
+
+    </tbody>
+</table>
+
+<script type="text/javascript">
+
+    let data = []
+    ViewData();
+    function save() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        let obj = {
+            id: Math.floor(Math.random() * 1000),
+            username: name,
+            useremail: email,
+            userpassword: password,
+        }
+
+
+        if (localStorage.getItem('crud') === null || localStorage.getItem('crud') === undefined) {
+            data.push(obj);
+            localStorage.setItem('crud', JSON.stringify(data));
+        }
+        else {
+            let val = JSON.parse(localStorage.getItem('crud'));
+            val.push(obj);
+            localStorage.setItem('crud', JSON.stringify(val));
+        }
+
+        alert("Record successfully entered ");
+
+        document.getElementById('name').value = "";
+        document.getElementById('email').value = "";
+        document.getElementById('password').value = "";
+
+        ViewData();
+    }
+
+    function ViewData() {
+        let val = JSON.parse(localStorage.getItem('crud'));
+        let tbl = "";
+
+        // using map function 
+
+        let map= val.map((val)=>{
+            tbl += `
+                    <tr>
+                        <td>${val.username}</td>    
+                        <td>${val.useremail}</td>    
+                        <td>${val.userpassword}</td>    
+                    </tr>
+                `
+        })
+
+        // using for loop
+
+        // for (let i in val) {
+        //     tbl += `
+        //             <tr>
+        //                 <td>${val[i].id}</td>    
+        //                 <td>${val[i].username}</td>    
+        //                 <td>${val[i].useremail}</td>    
+        //                 <td>${val[i].userpassword}</td>    
+        //                 <td><button onclick="DeleteData(${val[i].id})">Delete</button></td>    
+        //             </tr>
+        //         `
+        // }
+
+        document.getElementById('record').innerHTML = tbl;
+    }
+
+    const DeleteData = (id) => {
+        let val = JSON.parse(localStorage.getItem('crud'));
+
+        for (let i in val) {
+            if (val[i].id == id) {
+                val.splice(i, 1);
+            }
+            localStorage.setItem('crud', JSON.stringify(val));
+        }
+        alert("Record deleted sucessfully");
+        ViewData();
+    }
+
+</script>
