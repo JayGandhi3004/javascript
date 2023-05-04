@@ -1,5 +1,6 @@
 <table border="1">
 
+    <input type="hidden" id="id" />
     <tr>
         <td>Name :</td>
         <td>
@@ -21,7 +22,8 @@
     <tr>
         <td></td>
         <td>
-            <input onclick="save()" type="button" value="submit" name="password" />
+            <input onclick="save()" type="button" value="submit" name="password" id="save" />
+            <input onclick="Edit()" type="button" value="Edit" name="password" id="edit" />
         </td>
     </tr>
 </table>
@@ -36,47 +38,50 @@
         <td>Action</td>
     </tr>
     <tbody id="record">
-        
+
     </tbody>
 </table>
 
 <script type="text/javascript">
-    let data=[]
-      viewdata();
-    function save(){
-        var name=document.getElementById('name').value;
-        var email=document.getElementById('email').value;
-        var password=document.getElementById('password').value;
+    let data = []
+    viewdata();
+    function save() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
 
-        let obj={
-            userid: Math.floor(Math.random() * 0),
+        let obj = {
+            userid: Math.floor(Math.random() * 10),
             username: name,
             useremail: email,
             userpassword: password,
         }
 
-        if(localStorage.getItem('crud')=== null || localStorage.getItem('crud')=== undefined){
+        if (localStorage.getItem('crud') === null || localStorage.getItem('crud') === undefined) {
             data.push(obj);
-            localStorage.setItem('crud',JSON.stringify(data));
-        }else{
-            let val=JSON.parse(localStorage.getItem('crud'));
+            localStorage.setItem('crud', JSON.stringify(data));
+        } else {
+            let val = JSON.parse(localStorage.getItem('crud'));
             val.push(obj);
-            localStorage.setItem('crud',JSON.stringify(val));
+            localStorage.setItem('crud', JSON.stringify(val));
         }
 
-            
+
 
         alert("Record Sucessfull");
-        document.getElementById('name').value="";
-        document.getElementById('email').value="";
-        document.getElementById('password').value="";
+        document.getElementById('name').value = "";
+        document.getElementById('email').value = "";
+        document.getElementById('password').value = "";
         viewdata();
     }
 
-    function viewdata(){
+    function viewdata() {
+
+        document.getElementById("edit").style.display = "none"
+
         let val = JSON.parse(localStorage.getItem('crud'));
         let tbl = "";
-        
+
         // let map = val.map((val)=>{
         //     tbl+=  `
         //                 <tr>
@@ -87,18 +92,21 @@
         //             ` 
         // })
 
-        for(let i in val){
-            tbl+=  `
+        for (let i in val) {
+            tbl += `
                         <tr>
                             <td>${val[i].userid}</td>
                             <td>${val[i].username}</td>
                             <td>${val[i].useremail}</td>
                             <td>${val[i].userpassword}</td>
-                            <td><button onclick="DeleteData(${val[i].userid})">Delete</button></td>
+                            <td>
+                                <button onclick="DeleteData(${val[i].userid})">Delete</button>
+                                <button onclick="EditData(${val[i].userid})">Edit</button>
+                            </td>
                         </tr>
-                    ` 
+                    `
         }
-        document.getElementById('record').innerHTML=tbl;
+        document.getElementById('record').innerHTML = tbl;
     }
 
     // function DeleteData(userid){
@@ -114,20 +122,58 @@
     // viewdata();
 
 
-    const DeleteData = (userid) =>{
+    const DeleteData = (userid) => {
         let val = JSON.parse(localStorage.getItem('crud'));
 
-        for(let i in val){
-            if(val[i].userid == userid){
-                val.splice(i,1);
+        for (let i in val) {
+            if (val[i].userid == userid) {
+                val.splice(i, 1);
+            }
+            localStorage.setItem('crud', JSON.stringify(val));
         }
-        localStorage.setItem('crud',JSON.stringify(val));
+        alert('Confirm Delete Data');
+        viewdata();
     }
-    alert('Confirm Delete Data');
-    viewdata();
-}
 
+    function Edit() {
+        let id = document.getElementById('id').value;
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
 
+        let val = JSON.parse(localStorage.getItem('crud'));
+        for (let i in val) {
+            if (val[i].userid == id) {
+                val[i].username = name;
+                val[i].useremail = email;
+                val[i].userpassword = password;
+            }
+            localStorage.setItem('crud', JSON.stringify(val));
+        }
+        alert("Reocrd change");
+        document.getElementById('id').value = "";
+        document.getElementById('name').value = "";
+        document.getElementById('email').value = "";
+        document.getElementById('password').value = "";
+
+        viewdata();
+    }
+
+    function EditData(userid) {
+        document.getElementById("save").style.display = "none"
+        document.getElementById("edit").style.display = "block"
+
+        let val = JSON.parse(localStorage.getItem('crud'));
+
+        for (let i in val) {
+            if (val[i].userid == userid) {
+                document.getElementById('id').value = val[i].userid;
+                document.getElementById('name').value = val[i].username;
+                document.getElementById('email').value = val[i].useremail;
+                document.getElementById('password').value = val[i].userpassword;
+            }
+        }
+    }
 
 
 </script>
