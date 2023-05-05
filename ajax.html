@@ -1,13 +1,13 @@
 <table border="1">
-<tr>
-    <td>Id</td>
-    <td>Name</td>
-    <td>Username</td>
-    <td>Email</td>
-</tr>
-<tbody id="record">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Username</td>
+        <td>Email</td>
+    </tr>
+    <tbody id="record">
 
-</tbody>
+    </tbody>
 
 </table>
 
@@ -15,14 +15,14 @@
 
 <script type="text/javascript">
 
-    const data=()=>{
+    const data = () => {
         $.ajax({
-            type:'GET',
-            url:'https://jsonplaceholder.typicode.com/users',
-            success:function(val){
-                var tbl="";
-                val.map((val)=>{
-                    tbl+=`
+            type: 'GET',
+            url: 'https://jsonplaceholder.typicode.com/users',
+            success: function (val) {
+                var tbl = "";
+                val.map((val) => {
+                    tbl += `
                             <tr>
                                 <td>${val.id}</td>    
                                 <td>${val.name}</td>    
@@ -31,9 +31,9 @@
                             </tr>
                         `
                 })
-                document.getElementById("record").innerHTML=tbl
+                document.getElementById("record").innerHTML = tbl
             }
-            
+
         })
     }
     data();

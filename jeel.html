@@ -6,24 +6,24 @@
         <td>Description</td>
     </tr>
     <tbody id="record">
-    
+
     </tbody>
-    
-    </table>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    
-    <script type="text/javascript">
-    
-        const data=()=>{
-            $.ajax({
-                type:'GET',
-                // url:'https://jsonplaceholder.typicode.com/users',
-                url:'https://fakestoreapi.com/products',
-                success:function(val){
-                    var tbl="";
-                    val.map((val)=>{
-                        tbl+=`
+
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    const data = () => {
+        $.ajax({
+            type: 'GET',
+            // url:'https://jsonplaceholder.typicode.com/users',
+            url: 'https://fakestoreapi.com/products',
+            success: function (val) {
+                var tbl = "";
+                val.map((val) => {
+                    tbl += `
                                 <tr>
                                     <td>${val.id}</td>    
                                     <td>${val.title}</td>    
@@ -31,12 +31,12 @@
                                     <td>${val.description}</td>    
                                 </tr>
                             `
-                    })
-                    document.getElementById("record").innerHTML=tbl
-                }
-                
-            })
-        }
-        data();
-    
-    </script>
+                })
+                document.getElementById("record").innerHTML = tbl
+            }
+
+        })
+    }
+    data();
+
+</script>
