@@ -1,0 +1,203 @@
+<div class="container">
+    <input type="hidden" class="input" id="id" />
+    <div class="form">
+        <input type="text" class="input" id="input" />
+        <button onclick="save()" class="add">ADD</button>
+    </div>
+    <div class="tasks">
+        <table>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tbody id="table">
+
+            </tbody>
+        </table>
+    </div>
+    <button onclick="deleteall()" id="deleteall">Delete all</button>
+</div>
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+        width: 500px;
+        margin: 20px auto;
+    }
+
+    .form {
+        background-color: #eee;
+        border-radius: 6px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .input {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        flex: 1;
+    }
+
+    .input:focus,
+    .add:focus {
+        outline: none;
+    }
+
+    .add {
+        border: none;
+        background-color: #f44336;
+        color: white;
+        padding: 10px;
+        border-radius: 6px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .tasks {
+        background-color: #eee;
+        margin-top: 20px;
+        border-radius: 6px;
+        padding: 20px;
+    }
+
+    .tasks .task {
+        background-color: white;
+        padding: 10px;
+        border-radius: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+
+    .tasks .task:not(:last-child) {
+        margin-bottom: 15px;
+    }
+
+    .tasks .task:hover {
+        background-color: #f7f7f7;
+    }
+
+    .tasks .task.done {
+        opacity: 0.5;
+        position: relative;
+    }
+
+    .task.done::after {
+        position: absolute;
+        content: "";
+    }
+
+    .tasks .task span {
+        font-weight: bold;
+        font-size: 10px;
+        background-color: red;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #deleteall {
+        width: calc(100% - 25px);
+        margin: auto;
+        padding: 12px;
+        text-align: center;
+        font-size: 14px;
+        color: white;
+        background-color: #f44336;
+        margin-top: 20px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .btn {
+        background-color:#f44336;
+        color:white;
+        border: none;
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 5px;
+        margin-left: 375px;
+    }
+</style>
+
+<script>
+    let data = [];
+    view();
+    function save() {
+        let list = document.getElementById('input').value;
+
+        let obj = {
+            id: Math.floor(Math.random() * 10000),
+            list: list,
+        }
+
+        if (localStorage.getItem('crud') == null || localStorage.getItem('crud') == undefined) {
+            data.push(obj);
+            localStorage.setItem('crud', JSON.stringify(data));
+        }
+        else {
+            let val = JSON.parse(localStorage.getItem('crud'));
+            val.push(obj);
+            localStorage.setItem('crud', JSON.stringify(val));
+        }
+        alert("Task Added succesfully");
+
+        document.getElementById('input').value = "";
+        view();
+    }
+
+    function view() {
+        let val = JSON.parse(localStorage.getItem('crud'));
+
+        let tbl = "";
+
+        for (let i in val) {
+            tbl += `
+                    <tr>
+                        <td>${val[i].list}</td>
+                        <td><button class="btn" onclick="Delete(${val[i].id})">Delete</button></td>
+                    </tr>
+                `
+        }
+        document.getElementById('table').innerHTML = tbl;
+
+    }
+    view();
+
+    function Delete(id) {
+        let val = JSON.parse(localStorage.getItem('crud'));
+
+        for (let i in val) {
+            if (val[i].id == id) {
+                val.splice(i, 1);
+            }
+            localStorage.setItem('crud', JSON.stringify(val));
+        }
+        alert("Delete Task ?");
+        view();
+    }
+
+    function deleteall() {
+        let val = JSON.parse(localStorage.getItem('crud'));
+
+        for (let i in val) {
+            if (val[i].id) {
+                val.splice(i);
+            }
+            localStorage.setItem('crud', JSON.stringify(val));
+        }
+        alert("Delete All Task ?");
+        view();
+    }
+
+</script>
