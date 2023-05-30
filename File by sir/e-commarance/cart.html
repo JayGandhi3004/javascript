@@ -1,0 +1,51 @@
+<table border="1">
+    <tr>
+        <td>Image</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Qty</td>
+        <td>Total</td>
+        <td>Action</td>
+
+    </tr>
+
+        <tbody id="cartdata">
+
+        </tbody>
+</table>
+
+<script type="text/javascript">
+    const viewData = () => {
+        
+        let allcart = JSON.parse(localStorage.getItem('cart'));
+        let tbl  = "";
+        allcart.map((val)=>{
+            tbl += `
+                    <tr>
+                        <td><img src='${val.image}' width="100"/></td>
+                        <td>${val.productname}</td>
+                        <td>${val.price}</td>
+                        <td><input type="text" value="${val.qty}"/></td>
+                        <td>${val.price * val.qty}</td>
+                        <td>
+                            <button onclick="deleteData(${val.productid})">Delete</button> ||
+                            <button onclick="">Edit</button>
+                        </td>
+                    </tr>
+                `
+        })
+        document.getElementById('cartdata').innerHTML = tbl;
+    }
+    viewData();
+    const deleteData = (pid) => {
+        
+        let allcart = JSON.parse(localStorage.getItem('cart'));
+    
+        let ans = allcart.filter((val)=>{
+            return val.productid != pid;
+        })
+        localStorage.setItem('cart',JSON.stringify(ans));
+        alert("order successfully delete");
+        viewData();
+    }
+</script>
