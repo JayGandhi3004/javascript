@@ -9,15 +9,23 @@
   
     <form class="login-container">
       <p><input type="email" id="email" placeholder="Email"></p>
-      <p><input type="password" id="pass" placeholder="Password"></p>
+      <p><input type="text" id="pass" placeholder="Password"></p>
       <a href="forget-pass.html">Forgot Password</a>
-      <p><input type="submit" onclick="login()" value="Log in"></p>
+      <p><input type="button" onclick="login()" value="Log in"></p>
     </form>
   </div>
 
 
   
   <script type="text/javascript">
+
+    let checkUserLogOut = JSON.parse(localStorage.getItem('checkUserLogin'))
+
+    if(checkUserLogOut){
+        alert("Lalla Log Out karle");
+        window.location.href = "index.html";
+    }
+
     function login() {
         let email = document.getElementById('email').value;
         let pass = document.getElementById('pass').value;
